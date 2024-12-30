@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Papyrus", fantasy;
+}
+
+body {
+    display: grid;
+    place-content: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-image: url('images/t5.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    background-attachment: fixed; /* Для фиксированного фона */
+}
+
+.flipbook {
+    width: 90%;
+    max-width: 1500px;
+    height: auto;
+    max-height: 600px;
+}
+
+.flipbook .hard {
+    background-image: url('/images/hard.jpg') !important;
+    color: #fff;
+    font-weight: bold;
+    font-family: "Papyrus", fantasy;
+    font-size: 40px;
+    border: none;
+}
+
+.flipbook .hard small {
+    font-family: "Papyrus", fantasy;
+    font-style: italic;
+    font-weight: lighter;
+    opacity: 0.7;
+    font-size: 14px;
+}
+
+.flipbook .page {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.11);
+}
+
+.page img {
+    width: 100%;
+    max-width: 70%;
+    height: auto;
+    object-fit: cover;
+    margin: auto;
+    cursor: zoom-in;
+    border: 10px solid rgb(101, 140, 167);
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.page video {
+    width: 100%;
+    max-width: 90%;
+    height: auto;
+    object-fit: cover;
+    margin: auto;
+}
+
+.flipbook .page small {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.heading {
+    font-family: "Papyrus", fantasy;
+    font-size: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    top: -130px;
+}
+
+.russia {
+    font-size: 15px;
+    margin-bottom: 20px;
+    position: relative;
+    top: -100px;
+}
+
+.city {
+    font-size: 25px;
+    margin-bottom: 20px;
+    position: relative;
+    top: 40px;
+}
+
+.zoomable {
+    display: block;
+    margin: auto;
+    max-width: 70%;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.zoomable:hover {
+    transform: scale(1.3);
+}
+
+.overlay img {
+    width: 100%;
+    max-width: 70%;
+    object-fit: cover;
+    margin: auto;
+    cursor: zoom-in;
+}
+
+#widgets-container {
+    position: fixed;
+    top: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px; 
+    z-index: 9999;
+}
+
+#currency-widget, #weather-widget {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+
+footer {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    z-index: 9999;
+    position: fixed;
+    bottom: 20px;
+    left: 20px; /* Поставим виджет в левый нижний угол */
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.footer-container {
+    width: auto;
+    padding: 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* Убираем фиксированное позиционирование */
+}
+
+.social-icons a {
+    text-decoration: none;
+    padding: 15px;
+    background-color: white;
+    margin: 5px;
+    border-radius: 50%;
+    transition: 0.5s ease;
+    display: inline-block;
+}
+
+.social-icons a i {
+    font-size: 2em;
+    color: black;
+    opacity: 0.8;
+}
+
+.social-icons a:hover {
+    background-color: #111;
+    color: white;
+}
+
+.footer-bottom {
+    padding: 1px;
+    text-align: center;
+}
+
+.footer-bottom p {
+    margin: 5px;
+    color: white;
+    font-size: 20px;
+}
+
+#rain-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1000;
+    display: none;
+}
+
+.raindrop {
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+.toggle-switch {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    width: 50px;
+    height: 25px;
+    display: inline-block;
+}
+
+.toggle-switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 25px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 19px;
+    width: 19px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(25px);
+}
+
+@media (max-width: 768px) {
+    #currency-widget,
+    #weather-widget,
+    footer {
+        left: 10px;
+        right: 10px;
+        max-width: 90%;
+    }
+    
+    .flipbook {
+        width: 100%;
+        height: auto;
+    }
+
+    .page img {
+        width: 90%;
+        max-width: 100%;
+    }
+    
+    .page video {
+        width: 90%;
+    }
+
+    .zoomable {
+        max-width: 90%;
+    }
+}
